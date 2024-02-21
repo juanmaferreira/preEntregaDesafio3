@@ -9,8 +9,16 @@ export class ShoppingCartPage {
         cy.contains('button', 'Show total price').click();
     }
 
-    chequearPrecioAcumulado(precio1, cantidad1, precio2, cantidad2){
-        cy.get('#price').should("have.text", ((precio1*cantidad1)+(precio2*cantidad2)).toString());
+    chequearPrecioAcumulado(productos){
+        let totalProductos = 0;
+        for(let i=0; i < productos.length; i++){
+            totalProductos += productos[i].cantidad* productos[i].precio;
+        }
+        cy.get('#price').should("have.text", (totalProductos).toString());
+        return totalProductos.toString();
     }
 
+    goToCheckout(){
+        cy.get('[data-cy="goCheckout"]').click();
+    }
 }

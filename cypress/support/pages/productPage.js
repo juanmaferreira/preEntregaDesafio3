@@ -1,7 +1,7 @@
 export class ProductPage {
 
-    buscarProducto(nombre){
-        cy.xpath("/html/body/div[1]/div/div[2]/div[1]/input").type(nombre);
+    cambiarProducto(){
+        cy.xpath("/html/body/div[1]/div/div[2]/div[2]/div/button[2]").click();
     }
 
     agregarProducto(nombre, cantidad){
